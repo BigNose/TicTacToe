@@ -25,6 +25,7 @@ Class Player
 		$this->setName($name);
 		$this->setSymbol($symbol);
 	}
+	
 	/**
 	* @param string $name
 	* Checks if the selected name is empty and sets the name of the player.
@@ -62,20 +63,20 @@ Class Player
 	
 	/**
 	* @return string
-	* Returns the name of the player
+	* Returns the name of the player object
 	*/
 	public function getName()
 	{
-		return $this->name;
+		return($this->name);
 	}
 	
 	/**
 	* @return string
-	* Returns the symbol used to represent the player ingame
+	* Returns the symbol used to represent the player object ingame
 	*/
 	public function getSymbol()
 	{
-		return $this->symbol;
+		return($this->symbol);
 	}
 }
 	

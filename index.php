@@ -1,14 +1,15 @@
 <?php
 
 session_start();
-session_destroy();
+//session_destroy();
+
 require_once("TicTacToe.php");
 require_once("Template.php");
 require_once("Board.php");
 require_once("Player.php");
 
-$player1 = new Player("SpielerEins", "X");
-$player2 = new Player("SpielerZwei", "O");
+$player1 = new Player("Spieler 1", "X");
+$player2 = new Player("Spieler 2", "O");
 
 echo $player1->getName()." ".$player1->getSymbol()."</br>";
 echo $player2->getName()." ".$player2->getSymbol()."</br>";
