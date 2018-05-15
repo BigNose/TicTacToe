@@ -55,18 +55,18 @@ Class Board
 	* @return string $output
 	* Returns current state of the board as whole HTML table
 	*/
-	public function getBoardHTML()
+	public function getBoardHtml()
 	{
 		//initializing variables
 		$output = '<table class="tic">';
 		
 		//iterating through rows
-		for($row = 0; $row < count($board); $row++)
+		for($row = 0; $row < count($this->board); $row++)
 		{
 			$output .= '<tr>';
 			
 			//iterating through columns
-			for($col = 0; $col < count($board[count($board)]); $col++)
+			for($col = 0; $col < count($this->board[count($this->board) - 1]); $col++)
 			{
 				$output .= '<td>';
 				
