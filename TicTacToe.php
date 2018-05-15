@@ -32,7 +32,6 @@ class TicTacToe
 		$this->player1 = $player1;
 		$this->player2 = $player2;
 		$this->currentPlayer = $player1;
-		//print_r($this->currentPlayer->getSymbol());
 	}
 	
 	/**
@@ -65,9 +64,6 @@ class TicTacToe
 	*/
 	public function currentStatus()
 	{
-		//for testing:
-		var_dump($this->board->getBoard());
-		
 		//iterate through rows
 		for ($iRow = 0; $iRow < count($this->board->getBoard()); $iRow++)
 		{

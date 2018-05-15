@@ -28,7 +28,6 @@ Class Board
 	*/
 	public function placeSymbol($symbol, $row, $col)
 	{
-		//var_dump($this->board);
 		$this->board[$row][$col] = $symbol;
 		var_dump($this->board);
 	}
