@@ -6,22 +6,25 @@ Class Board
 	* @var array string $board
 	* Contains the array used to represent the playing field.
 	*/
-	private $board = array();
+	private $board;
 
 	/**
 	* Fills a new board object with an emtpy 3x3 field (array)
 	*/
 	public function __construct()
 	{
-		$this->board = array(
-			array("","",""),
-			array("","",""),
-			array("","",""),
-			);
+		$this->board = [
+			["","",""],
+			["","",""],
+			["","",""],
+		];
 	}
 	
 	/**
-	* modifies the board by adding $symbol into the array at $row/$col
+	* @param string $symbol
+	* @param int $row
+	* @param int $col
+	* modifies $board by adding $symbol into the array at $row/$col
 	*/
 	public function placeSymbol($symbol, $row, $col)
 	{
