@@ -44,7 +44,7 @@ Class Player
 	
 	/**
 	* @param string $symbol
-	* Checks if the selected symbol is empty or >1 and sets the character to represent the player ingame.
+	* Checks if trying to set empty or >1 $symbol; sets character to represent the player object.
 	*/
 	private function setSymbol($symbol)
 	{
