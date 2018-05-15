@@ -29,7 +29,17 @@ Class Board
 	public function placeSymbol($symbol, $row, $col)
 	{
 		$this->board[$row][$col] = $symbol;
-		var_dump($this->board);
+	}
+	
+	/**
+	* @param int $row
+	* @param int $col
+	* @return string
+	* Returns value of $board array in position $row/$col
+	*/
+	public function returnSymbol($row, $col)
+	{
+		return($this->board[$row][$col]);
 	}
 	
 	/**
