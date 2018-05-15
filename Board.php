@@ -61,12 +61,12 @@ Class Board
 		$output = '<table class="tic">';
 		
 		//iterating through rows
-		for($row, $row <= count($board), $row++)
+		for($row = 0; $row < count($board); $row++)
 		{
 			$output .= '<tr>';
 			
 			//iterating through columns
-			for($col, $col <= count($board[count($board)]), $col++)
+			for($col = 0; $col < count($board[count($board)]); $col++)
 			{
 				$output .= '<td>';
 				
