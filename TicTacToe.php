@@ -41,7 +41,7 @@ class TicTacToe
 	**/
 	public function move($row, $col)
 	{
-		$this->currentStatus();
+	//	$this->currentStatus();
 		$this->board->placeSymbol('X', $row, $col);
 	}
 	
@@ -65,19 +65,19 @@ class TicTacToe
 	public function currentStatus()
 	{
 		//iterate through rows
-		for ($iRow = 0; $iRow < count($this->board->getBoard()); $iRow++)
+		for ($row = 0; $row < count($this->board->getBoard()); $row++)
 		{
-			$checkRow = array_unique($this->board->getBoard()[$iRow]);
+			$checkRow = array_unique($this->board->getBoard()[$row]);
 
 			//iterate through columns
-			for ($iCol = 0; $iCol < count($this->board->getBoard()); $iCol++)
+			for ($col = 0; $col < count($this->board->getBoard()); $col++)
 			{
-				$checkCol[] = $this->board->getBoard()[$iCol][$iRow];
+				$checkCol[] = $this->board->getBoard()[$col][$row];
 			}
 			
-			$currDiaCol = count($this->board->getBoard()) - 1 - ($iRow);
-			$checkDiaLeft[] = $this->board->getBoard()[$iRow][$currDiaCol];
-			$checkDiaRight[] = $this->board->getBoard()[$iRow][$iRow];
+			$currDiaCol = count($this->board->getBoard()) - 1 - ($row);
+			$checkDiaLeft[] = $this->board->getBoard()[$row][$currDiaCol];
+			$checkDiaRight[] = $this->board->getBoard()[$row][$row];
 			
 			//checking through the different victory conditions
 			if ($this->checkUnique($checkDiaLeft) 
