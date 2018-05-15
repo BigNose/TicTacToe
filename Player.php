@@ -34,7 +34,7 @@ Class Player
 	{
 		if(empty($name))
 		{
-			die("Alle Spieler müssen einen Namen wählen!");
+			die('Alle Spieler müssen einen Namen wählen!');
 		}
 		else
 		{
@@ -50,11 +50,11 @@ Class Player
 	{
 		if(empty($symbol))
 		{
-			die($this->name." muss ein Zeichen wählen! (keine Ziffern)");
+			die($this->name.' muss ein Zeichen wählen! (keine Ziffern)');
 		}
 		elseif(strlen($symbol)>=2)
 		{
-			die($this->name." darf nur einen Buchstaben (und keine Ziffern) wählen!");
+			die($this->name.' darf nur einen Buchstaben (und keine Ziffern) wählen!');
 		}
 		{
 			$this->symbol = $symbol;

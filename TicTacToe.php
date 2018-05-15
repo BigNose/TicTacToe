@@ -43,7 +43,7 @@ class TicTacToe
 	public function move($row, $col)
 	{
 		$this->currentStatus();
-		$this->board->placeSymbol("X", $row, $col);
+		$this->board->placeSymbol('X', $row, $col);
 	}
 	
 	/**
