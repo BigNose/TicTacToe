@@ -58,16 +58,15 @@ Class Board
 	public function getBoardHTML()
 	{
 		//initializing variables
-		$rowndex = '';
 		$output = '<table class="tic">';
 		
 		//iterating through rows
-		for($row, $row < 3, $row++)
+		for($row, $row < count($board), $row++)
 		{
 			$output .= '<tr>';
 			
 			//iterating through columns
-			for($col, $col < 3, $col++)
+			for($col, $col < count($board[count($board)]), $col++)
 			{
 				$output .= '<td>';
 				
