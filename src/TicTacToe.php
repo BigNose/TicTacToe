@@ -87,10 +87,10 @@ class TicTacToe
 		
 		//row
 		$counter = 0;
-		for($row = 0; $row < count($this->board); $row++)
+		for($row = 0; $row < count($board); $row++)
 		{
 			$counter = 0;
-			for($col = 0; $col < count($this->board[count($this->board) - 1]); $col++)
+			for($col = 0; $col < count($board[count($board) - 1]); $col++)
 			{
 				if($board[$col][$row] == $symbol)
 				{
@@ -105,10 +105,10 @@ class TicTacToe
 		
 		//col
 		$counter = 0;
-		for($col = 0; $col < count($this->board[count($this->board) - 1]); $col++)
+		for($col = 0; $col < count($board[count($board) - 1]); $col++)
 		{
 			$counter = 0;
-			for($row = 0; $row < count($this->board); $row++)
+			for($row = 0; $row < count($board); $row++)
 			{
 				if($board[$col][$row] == $symbol)
 				{
@@ -124,7 +124,7 @@ class TicTacToe
 		//diagonal (\)
 		$counter = 0;
 		$row = 0;
-		for($col = 0; $col < count($this->board[count($this->board) - 1]); $col++)
+		for($col = 0; $col < count($board[count($board) - 1]); $col++)
 		{
 			if($board[$col][$row] == $symbol)
 			{
@@ -140,7 +140,7 @@ class TicTacToe
 		//diagonal (/)
 		$counter = 0;
 		$row = 2;
-		for($col = 0; $col < count($this->board[count($this->board) - 1]); $col++)
+		for($col = 0; $col < count($board[count($board) - 1]); $col++)
 		{
 			if($board[$col][$row] == $symbol)
 			{
@@ -155,9 +155,9 @@ class TicTacToe
 		
 		//fullboard (3x3)
 		$counter = 0;
-		for($col = 0; $col < count($this->board[count($this->board) - 1]); $col++)
+		for($col = 0; $col < count($board[count($board) - 1]); $col++)
 		{
-			for($row = 0; $row < count($this->board); $row++)
+			for($row = 0; $row < count($board); $row++)
 			{
 				if($board[$col][$row] != "")
 				{
@@ -176,9 +176,9 @@ class TicTacToe
 	*/
 	private function switchPlayer()
 	{
-		for($col = 0; $col < count($this->board[count($this->board) - 1]); $col++)
+		for($col = 0; $col < count($this->board->getBoard()[count($this->board->getBoard()) - 1]); $col++)
 		{
-			for($row = 0; $row < count($this->board); $row++)
+			for($row = 0; $row < count($this->board->getBoard()); $row++)
 			{
 				if(isset($_GET["cell-".$col."-".$row]))
 				{

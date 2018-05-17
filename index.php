@@ -18,11 +18,7 @@ else //No session found, create new one
 	$TicTacToe = new TicTacToe($Board, $Player1, $Player2);
 }
 
-//for testing
-//$row === 0;
-//$col === 0;
-
-//$TicTacToe->move($row,$col);
+$TicTacToe->move();
 ?>
 <!DOCTYPE html>
 <head>

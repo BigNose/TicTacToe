@@ -14,8 +14,8 @@ Class Board
 	public function __construct()
 	{
 		$this->board = [
-			['','','X'],
-			['','O',''],
+			['','',''],
+			['','',''],
 			['','',''],
 		];
 	}
@@ -25,9 +25,9 @@ Class Board
 	*/
 	public function placeSymbol()
 	{
-		for($col = 0; $row < count($this->board); $row++)
+		for($row = 0; $row < count($this->board); $row++)
 		{
-			for($row = 0; $col < count($this->board[count($this->board) - 1]); $col++)
+			for($col = 0; $col < count($this->board[count($this->board) - 1]); $col++)
 			{
 				if(isset($_GET["cell-".$row."-".$col]))
 				{
