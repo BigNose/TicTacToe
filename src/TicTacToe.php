@@ -42,6 +42,7 @@ class TicTacToe
 		$this->switchPlayer();
 		$this->board->placeSymbol();
 		$winner = $this->currentStatus();
+		// one of the players wins
 		if($winner === 1)
 		{
 			if($this->currentPlayer === $this->player1)
@@ -57,6 +58,7 @@ class TicTacToe
 			session_destroy();
 			header("Refresh:5;url=index.php");
 		}
+		// game is a draw
 		if($winner === 2)
 		{
 			echo("DRAW");
