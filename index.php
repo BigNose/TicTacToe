@@ -1,35 +1,29 @@
 <?php
-
 session_start();
 //session_destroy();
 
-require_once("TicTacToe.php");
-require_once("Board.php");
-require_once("Player.php");
+define ('BASEPATH', realpath(dirname(__FILE__)));
+require_once (BASEPATH.DIRECTORY_SEPARATOR.'vendor' .DIRECTORY_SEPARATOR.'autoload.php');
 
 //Is there already a session ongoing?
-if (isset($_SESSION['TicTacToe']))
+if (isset($_SESSION['TicTacToe']) && !empty($_SESSION['TicTacToe']))
 {
-	$Game = unserialize($_SESSION['TicTacToe']);
+	$TicTacToe = unserialize($_SESSION['TicTacToe']);
 }
-//No session found, create new one 
-else 
+else //No session found, create new one
 {
 	$Player1 = new Player("Spieler 1", "X");
 	$Player2 = new Player("Spieler 2", "O");
 	$Board = new Board();
-	$Game = new TicTacToe($Board, $Player1, $Player2);
+	$TicTacToe = new TicTacToe($Board, $Player1, $Player2);
 }
 
 //for testing
 //$row == 0;
 //$col == 0;
 
-//$Game->move($row,$col);
-$_SESSION['TicTacToe'] = serialize($Game);
-
+//$TicTacToe->move($row,$col);
 ?>
-
 <!DOCTYPE html>
 <head>
     <meta charset="utf-8">
@@ -74,8 +68,8 @@ $_SESSION['TicTacToe'] = serialize($Game);
             <form method="get" action="index.php">
 			
 				<?php
-					echo($Board->getBoardHtml());
-					print_r($Board->getBoard());
+					print_r($TicTacToe->getBoard()->getBoard());
+					echo($TicTacToe->getBoard()->getBoardHtml());
 				?>
 				
 			</form>
@@ -83,3 +77,7 @@ $_SESSION['TicTacToe'] = serialize($Game);
     </section>
 </body>
 </html>
+
+<?php
+	$_SESSION['TicTacToe'] = serialize($TicTacToe);
+?>

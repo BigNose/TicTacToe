@@ -44,7 +44,7 @@ Class Board
 	
 	/**
 	* @return array string
-	* Returns current state of the board
+	* Returns the board as a 2-dimensional array of strings
 	*/
 	public function getBoard()
 	{
@@ -57,7 +57,6 @@ Class Board
 	*/
 	public function getBoardHtml()
 	{
-		//initializing variables
 		$output = '<table class="tic">';
 		
 		//iterating through rows
@@ -76,8 +75,7 @@ Class Board
 					//add still free and clickable part to table output
 					$output .= '<input type="submit" class="reset field" name="cell-'.$row.'-'.$col.'" value="X" />';
 				}
-				//array position is already taken
-				else
+				else //array position is already taken
 				{
 					//add array content to table output
 					$output .= '<span class="color'.$board[$row][$col].'">'.$board[$row][$col].'</span>';

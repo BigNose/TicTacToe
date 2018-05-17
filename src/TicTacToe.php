@@ -98,7 +98,10 @@ class TicTacToe
 		## ToDo, check active player and switch
 	}
 	
-	//for testing; should only be in Board.php
+	/**
+	* @return array string
+	* Returns current state of the board
+	*/
 	public function getBoard()
 	{
 		return $this->board;
