@@ -176,7 +176,31 @@ class TicTacToe
 	*/
 	private function switchPlayer()
 	{
-		## ToDo, check active player and switch
+		for($col = 0; $col < count($this->board[count($this->board) - 1]); $col++)
+		{
+			for($row = 0; $row < count($this->board); $row++)
+			{
+				if(isset($_GET["cell-".$col."-".$row]))
+				{
+					if($this->player1->getSymbol() == $_GET["cell-".$col."-".$row])
+					{
+						$this->currentPlayer = $this->player1;
+					}
+					if($this->player2->getSymbol() == $_GET["cell-".$col."-".$row])
+					{
+						$this->currentPlayer = $this->player2;
+					}
+				}
+			}
+		}
+		if($this->currentPlayer === $this->player1)
+		{
+			$this->currentPlayer = $this->player2;
+		}
+		else
+		{
+			$this->currentPlayer = $this->player1;
+		}
 	}
 	
 	/**
