@@ -64,7 +64,7 @@ $TicTacToe->move();
             <form method="get" action="index.php">
 			
 				<?php
-					print_r($TicTacToe->getBoard()->getBoard());
+					//output completed board
 					echo($TicTacToe->getBoard()->getBoardHtml());
 				?>
 				
