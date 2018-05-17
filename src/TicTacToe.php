@@ -75,12 +75,12 @@ class TicTacToe
 		}
 		$board = $this->board->getBoard();
 		
-		//col
+		//row
 		$counter = 0;
-		for($col = 0; $col <= 2; $col++)
+		for($row = 0; $row < count($this->board); $row++)
 		{
 			$counter = 0;
-			for($row = 0; $row <= 2; $row++)
+			for($col = 0; $col < count($this->board[count($this->board) - 1]); $col++)
 			{
 				if($board[$col][$row] == $symbol)
 				{
@@ -93,12 +93,12 @@ class TicTacToe
 			}
 		}
 		
-		//row
+		//col
 		$counter = 0;
-		for($row = 0; $row <= 2; $row++)
+		for($col = 0; $col < count($this->board[count($this->board) - 1]); $col++)
 		{
 			$counter = 0;
-			for($col = 0; $col <= 2; $col++)
+			for($row = 0; $row < count($this->board); $row++)
 			{
 				if($board[$col][$row] == $symbol)
 				{
@@ -114,7 +114,7 @@ class TicTacToe
 		//diagonal (\)
 		$counter = 0;
 		$row = 0;
-		for($col = 0; $col <= 2; $col++)
+		for($col = 0; $col < count($this->board[count($this->board) - 1]); $col++)
 		{
 			if($board[$col][$row] == $symbol)
 			{
@@ -130,7 +130,7 @@ class TicTacToe
 		//diagonal (/)
 		$counter = 0;
 		$row = 2;
-		for($col = 0; $col <= 2; $col++)
+		for($col = 0; $col < count($this->board[count($this->board) - 1]); $col++)
 		{
 			if($board[$col][$row] == $symbol)
 			{
@@ -145,9 +145,9 @@ class TicTacToe
 		
 		//fullboard (3x3)
 		$counter = 0;
-		for($col = 0; $col <= 2; $col++)
+		for($col = 0; $col < count($this->board[count($this->board) - 1]); $col++)
 		{
-			for($row = 0; $row <= 2; $row++)
+			for($row = 0; $row < count($this->board); $row++)
 			{
 				if($board[$col][$row] != "")
 				{
