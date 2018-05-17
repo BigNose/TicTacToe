@@ -21,14 +21,23 @@ Class Board
 	}
 	
 	/**
-	* @param string $symbol
-	* @param int $row
-	* @param int $col
-	* modifies $board by adding $symbol into the array at $row/$col
+	* modifies $board array by adding symbol into position given by $_GET
 	*/
-	public function placeSymbol($symbol, $row, $col)
+	public function placeSymbol()
 	{
-		$this->board[$row][$col] = $symbol;
+		for($col = 0; $row < count($this->board); $row++)
+		{
+			for($row = 0; $col < count($this->board[count($this->board) - 1]); $col++)
+			{
+				if(isset($_GET["cell-".$row."-".$col]))
+				{
+					if(empty($this->board[$row][$col]))
+					{
+						$this->board[$row][$col] = $_GET["cell-".$row."-".$col];
+					}
+				}
+			}
+		}
 	}
 	
 	/**
