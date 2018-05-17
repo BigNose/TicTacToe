@@ -64,28 +64,99 @@ class TicTacToe
 	*/
 	public function currentStatus()
 	{
-		//iterate through rows
-		for ($row = 0; $row < count($this->board->getBoard()); $row++)
+		//symbol
+		if($this->currentPlayer === $this->player1)
 		{
-			$checkRow = array_unique($this->board->getBoard()[$row]);
-
-			//iterate through columns
-			for ($col = 0; $col < count($this->board->getBoard()); $col++)
+			$symbol = $this->player2->getSymbol();
+		} 
+		else
+		{
+			$symbol = $this->player1->getSymbol();
+		}
+		$board = $this->board->getBoard();
+		
+		//col
+		$counter = 0;
+		for($col = 0; $col <= 2; $col++)
+		{
+			$counter = 0;
+			for($row = 0; $row <= 2; $row++)
 			{
-				$checkCol[] = $this->board->getBoard()[$col][$row];
+				if($board[$col][$row] == $symbol)
+				{
+					$counter += 1;
+					if($counter === 3)
+					{
+						return (1);
+					}
+				}	
 			}
-			
-			$currDiaCol = count($this->board->getBoard()) - 1 - ($row);
-			$checkDiaLeft[] = $this->board->getBoard()[$row][$currDiaCol];
-			$checkDiaRight[] = $this->board->getBoard()[$row][$row];
-			
-			//checking through the different victory conditions
-			if ($this->checkUnique($checkDiaLeft) 
-			 || $this->checkUnique($checkDiaRight) 
-			 || $this->checkUnique($checkRow) 
-			 || $this->checkUnique($checkCol))
+		}
+		
+		//row
+		$counter = 0;
+		for($row = 0; $row <= 2; $row++)
+		{
+			$counter = 0;
+			for($col = 0; $col <= 2; $col++)
 			{
-				return true;
+				if($board[$col][$row] == $symbol)
+				{
+					$counter += 1;
+					if($counter === 3)
+					{
+						return (1);
+					}
+				}	
+			}
+		}
+		
+		//diagonal (\)
+		$counter = 0;
+		$row = 0;
+		for($col = 0; $col <= 2; $col++)
+		{
+			if($board[$col][$row] == $symbol)
+			{
+				$counter += 1;
+				if($counter === 3)
+				{
+					return (1);
+				}
+			}
+			$row++;
+		}
+		
+		//diagonal (/)
+		$counter = 0;
+		$row = 2;
+		for($col = 0; $col <= 2; $col++)
+		{
+			if($board[$col][$row] == $symbol)
+			{
+				$counter += 1;
+				if($counter === 3)
+				{
+					return (1);
+				}
+			}
+			$row--;
+		}
+		
+		//fullboard (3x3)
+		$counter = 0;
+		for($col = 0; $col <= 2; $col++)
+		{
+			for($row = 0; $row <= 2; $row++)
+			{
+				if($board[$col][$row] != "")
+				{
+					$counter += 1;
+					if($counter === 9)
+					{
+						return (2);
+					}
+				}	
 			}
 		}
 	}

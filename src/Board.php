@@ -14,8 +14,8 @@ Class Board
 	public function __construct()
 	{
 		$this->board = [
-			['','',''],
-			['','',''],
+			['','','X'],
+			['','O',''],
 			['','',''],
 		];
 	}
@@ -44,7 +44,7 @@ Class Board
 	
 	/**
 	* @return array string
-	* Returns the board as a 2-dimensional array of strings
+	* Returns the current state of the board as a 2-dimensional array of strings
 	*/
 	public function getBoard()
 	{
@@ -78,7 +78,7 @@ Class Board
 				else //array position is already taken
 				{
 					//add array content to table output
-					$output .= '<span class="color'.$board[$row][$col].'">'.$board[$row][$col].'</span>';
+					$output .= '<span class="color'.$this->board[$row][$col].'">'.$this->board[$row][$col].'</span>';
 				}	
 				$output .= '</td>';
 			}	

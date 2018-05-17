@@ -19,8 +19,8 @@ else //No session found, create new one
 }
 
 //for testing
-//$row == 0;
-//$col == 0;
+//$row === 0;
+//$col === 0;
 
 //$TicTacToe->move($row,$col);
 ?>
