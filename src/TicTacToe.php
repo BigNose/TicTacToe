@@ -35,26 +35,34 @@ class TicTacToe
 	}
 	
 	/**
-	* @param int $row, $col
-	* ToDo: Implement $currentPlayer and use getSymbol()
-	* Sets an "X" in $row/$col
+	* Handles an entire move; calls player switch and win condition check
 	**/
-	public function move($row, $col)
+	public function move()
 	{
-	//	$this->currentStatus();
-		$this->board->placeSymbol('X', $row, $col);
-	}
-	
-	/**
-	* @param array $check
-	* @return bool true
-	* Returns true if $check is not empty and has 1 array element
-	**/
-	public function checkUnique($check)
-	{
-		if (count($check) === 1 && !empty($check[0]))
+		$this->switchPlayer();
+		$this->board->placeSymbol();
+		$winner = $this->currentStatus();
+		if($winner === 1)
 		{
-			return true;
+			if($this->currentPlayer === $this->player1)
+			{
+				$this->currentPlayer = $this->player2;
+			}
+			else
+			{
+				$this->currentPlayer = $this->player1;
+			}
+			echo($this->currentPlayer->getName().' wins!');
+			echo("<br>New Game starts in 5 seconds");
+			session_destroy();
+			header("Refresh:5;url=index.php");
+		}
+		if($winner === 2)
+		{
+			echo("DRAW");
+			echo("<br>New Game starts in 5 seconds");
+			session_destroy();
+			header("Refresh:5;url=index.php");	
 		}
 	}
 	

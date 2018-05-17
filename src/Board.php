@@ -58,17 +58,14 @@ Class Board
 	public function getBoardHtml()
 	{
 		$output = '<table class="tic">';
-		
 		//iterating through rows
 		for($row = 0; $row < count($this->board); $row++)
 		{
 			$output .= '<tr>';
-			
 			//iterating through columns
 			for($col = 0; $col < count($this->board[count($this->board) - 1]); $col++)
 			{
 				$output .= '<td>';
-				
 				//check if array position contains empty string
 				if($this->board[$row][$col] == '')
 				{
@@ -85,7 +82,6 @@ Class Board
 			$output .= '</tr>';
 		}
 		$output .= '</table>';
-		
 		//return completed HTML table of current board
 		return($output);
 	}
