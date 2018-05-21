@@ -74,78 +74,82 @@ class TicTacToe
 	*/
 	public function currentStatus()
 	{
-		$symbol = $this->getCurrentSymbol();		
+		$symbol = $this->getCurrentSymbol(); //symbol to check for
 		$board = $this->board->getBoard();
 		
-		//row
+		//check for column
 		$counter = 0;
-		for($row = 0; $row < count($board); $row++)
+		for($col = 0; $col < count($board); $col++)
 		{
 			$counter = 0;
-			for($col = 0; $col < count($board[count($board) - 1]); $col++)
+			for($row = 0; $row < count($board[count($board) - 1]); $row++)
 			{
-				if($board[$col][$row] == $symbol)
+				if($board[$row][$col] == $symbol)
 				{
 					$counter += 1;
 					if($counter === 3)
 					{
+						echo("won by col");
 						return (1);
 					}
 				}	
 			}	
 		}
 		
-		//col
+		//check for row
 		$counter = 0;
-		for($col = 0; $col < count($board[count($board) - 1]); $col++)
+		for($row = 0; $row < count($board[count($board) - 1]); $row++)
 		{
 			$counter = 0;
-			for($row = 0; $row < count($board); $row++)
+			for($col = 0; $col < count($board); $col++)
 			{
-				if($board[$col][$row] == $symbol)
+				if($board[$row][$col] == $symbol)
 				{
 					$counter += 1;
 					if($counter === 3)
 					{
+						echo("won by row");
 						return (1);
 					}
 				}	
 			}
 		}
 		
-		//diagonal (\)
+		//check for diagonal TL->BR
 		$counter = 0;
-		$row = 0;
-		for($col = 0; $col < count($board[count($board) - 1]); $col++)
+		$col = 0;
+		for($row = 0; $row < count($board[count($board) - 1]); $row++)
 		{
-			if($board[$col][$row] == $symbol)
+			if($board[$row][$col] == $symbol)
 			{
 				$counter += 1;
 				if($counter === 3)
 				{
+					echo("won by diag left");
 					return (1);
 				}
 			}
-			$row++;
+			$col++;
 		}
 		
-		//diagonal (/)
+		//check for diagonal BL->TR
 		$counter = 0;
-		$row = 2;
-		for($col = 0; $col < count($board[count($board) - 1]); $col++)
+		$col = 2;
+		for($row = 0; $row < count($board[count($board) - 1]); $row++)
 		{
-			if($board[$col][$row] == $symbol)
+			if($board[$row][$col] == $symbol)
 			{
 				$counter += 1;
 				if($counter === 3)
 				{
+					echo("won by diag right");
 					return (1);
 				}
 			}
-			$row--;
+			$col--;
 		}
 		
-		//full board
+		//check for full board
 		$counter = 0;
 		for($col = 0; $col < count($board[count($board) - 1]); $col++)
 		{
