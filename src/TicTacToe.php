@@ -89,7 +89,6 @@ class TicTacToe
 					$counter += 1;
 					if($counter === 3)
 					{
-						echo("won by col");
 						return (1);
 					}
 				}	
@@ -108,7 +107,6 @@ class TicTacToe
 					$counter += 1;
 					if($counter === 3)
 					{
-						echo("won by row");
 						return (1);
 					}
 				}	
@@ -125,7 +123,6 @@ class TicTacToe
 				$counter += 1;
 				if($counter === 3)
 				{
-					echo("won by diag left");
 					return (1);
 				}
 			}
@@ -142,7 +139,6 @@ class TicTacToe
 				$counter += 1;
 				if($counter === 3)
 				{
-					echo("won by diag right");
 					return (1);
 				}
 			}
