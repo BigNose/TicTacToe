@@ -10,7 +10,7 @@ Class Player
 	
 	/**
 	* @var string $symbol
-	* the player objects representative symbol ingame
+	* The player objects representative symbol ingame
 	*/
 	private $symbol;
 	
@@ -18,7 +18,7 @@ Class Player
 	* @param string $name
 	* Name of the new player object
 	* @param string $symbol
-	* Character that represents the new player object in the game
+	* Character that represents the new player object in the game ("X" or "O")
 	*/
 	public function __construct($name, $symbol)
 	{
@@ -28,7 +28,7 @@ Class Player
 	
 	/**
 	* @param string $name
-	* Checks if the selected name is empty and sets the name of the player.
+	* Checks if the selected name is empty and sets the name of the player
 	*/
 	private function setName($name)
 	{
@@ -44,20 +44,17 @@ Class Player
 	
 	/**
 	* @param string $symbol
-	* Checks if trying to set empty or >1 $symbol; sets character to represent the player object.
+	* Makes sure the players can only select "X" or "O"
 	*/
 	private function setSymbol($symbol)
 	{
-		if(empty($symbol))
-		{
-			die($this->name.' muss ein Zeichen wählen! (keine Ziffern)');
-		}
-		elseif(strlen($symbol)>=2)
-		{
-			die($this->name.' darf nur einen Buchstaben (und keine Ziffern) wählen!');
-		}
+		if($symbol === 'X' || $symbol === 'O')
 		{
 			$this->symbol = $symbol;
+		}
+		else
+		{
+			die($this->name.' darf nur "X" oder "O" wählen!');
 		}
 	}
 	

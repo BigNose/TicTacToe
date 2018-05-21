@@ -78,7 +78,7 @@ Class Board
 				//check if array position contains empty string
 				if($this->board[$row][$col] == '')
 				{
-					//add still free and clickable part to table output
+					//add still free and clickable cell to table output
 					$output .= '<input type="submit" class="reset field" name="cell-'.$row.'-'.$col.'" value="X" />';
 				}
 				else //array position is already taken
