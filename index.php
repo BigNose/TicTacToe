@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 
 define ('BASEPATH', realpath(dirname(__FILE__)));
@@ -17,6 +18,7 @@ else //No session found, create new one
 	$TicTacToe = new TicTacToe($Board, $Player1, $Player2);
 }
 ?>
+
 <!DOCTYPE html>
 <head>
     <meta charset="utf-8">

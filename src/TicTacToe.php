@@ -30,7 +30,12 @@ class TicTacToe
 	{
 		$this->board = $board;
 		$this->player1 = $player1;
-		$this->player2 = $player2;´
+		$this->player2 = $player2;
+		if($this->player1->getSymbol() == $this->player2->getSymbol())
+		{
+			echo("Both Players selected the same symbol!");
+			die;
+		}
 		//Player 1 is the first to move
 		$this->currentPlayer = $player1;
 	}

@@ -34,7 +34,7 @@ Class Player
 	{
 		if(empty($name))
 		{
-			die('Alle Spieler müssen einen Namen wählen!');
+			die('All players have to have a name!');
 		}
 		else
 		{
@@ -54,7 +54,7 @@ Class Player
 		}
 		else
 		{
-			die($this->name.' darf nur "X" oder "O" wählen!');
+			die($this->name.' has to select either "X" or "O"!');
 		}
 	}
 	
