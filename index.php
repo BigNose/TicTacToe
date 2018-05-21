@@ -1,6 +1,5 @@
 <?php
 session_start();
-//session_destroy();
 
 define ('BASEPATH', realpath(dirname(__FILE__)));
 require_once (BASEPATH.DIRECTORY_SEPARATOR.'vendor' .DIRECTORY_SEPARATOR.'autoload.php');
@@ -12,13 +11,11 @@ if (isset($_SESSION['TicTacToe']) && !empty($_SESSION['TicTacToe']))
 }
 else //No session found, create new one
 {
-	$Player1 = new Player("Spieler 1", "X");
-	$Player2 = new Player("Spieler 2", "O");
+	$Player1 = new Player("Xena", "X");
+	$Player2 = new Player("Olaf", "O");
 	$Board = new Board();
 	$TicTacToe = new TicTacToe($Board, $Player1, $Player2);
 }
-
-$TicTacToe->move();
 ?>
 <!DOCTYPE html>
 <head>
@@ -64,6 +61,8 @@ $TicTacToe->move();
             <form method="get" action="index.php">
 			
 				<?php				
+					$TicTacToe->move();
+					
 					//output completed board
 					echo($TicTacToe->getBoard()->getBoardHtml($TicTacToe->getCurrentSymbol()));
 				?>

@@ -29,12 +29,9 @@ Class Board
 		{
 			for($col = 0; $col < count($this->board[count($this->board) - 1]); $col++)
 			{
-				if(isset($_GET["cell-".$row."-".$col]))
+				if(isset($_GET["cell-".$row."-".$col]) && empty($this->board[$row][$col]))
 				{
-					if(empty($this->board[$row][$col]))
-					{
-						$this->board[$row][$col] = $_GET["cell-".$row."-".$col];
-					}
+					$this->board[$row][$col] = $_GET["cell-".$row."-".$col];
 				}
 			}
 		}

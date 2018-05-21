@@ -24,65 +24,52 @@ class TicTacToe
 	/**
 	* @param Board $board
 	* @param Player $player1, $player2
-	* Starts a new game and selects $player1 as the current player.
+	* Starts a new game and checks input validity, then selects $player1 as the current player.
 	*/
 	public function __construct(Board $board, Player $player1, Player $player2)
 	{
 		$this->board = $board;
 		$this->player1 = $player1;
-		$this->player2 = $player2;
+		$this->player2 = $player2;´
+		//Player 1 is the first to move
 		$this->currentPlayer = $player1;
 	}
 	
 	/**
-	* Handles an entire move; calls player switch and win condition check
+	* Handles an entire move; calls win condition check and player switch
 	**/
 	public function move()
 	{
-		$this->switchPlayer();
 		$this->board->placeSymbol();
 		$winner = $this->currentStatus();
-		// one of the players wins
-		if($winner === 1)
+		
+		if($winner === 1) //one player wins
 		{
-			if($this->currentPlayer === $this->player1)
-			{
-				$this->currentPlayer = $this->player2;
-			}
-			else
-			{
-				$this->currentPlayer = $this->player1;
-			}
-			echo($this->currentPlayer->getName().' wins!');
-			echo("<br>New Game starts in 5 seconds");
+			echo('<b>'.$this->currentPlayer->getName().' wins!</b>');
+			echo('<br/>(New Game starts in 5 seconds...)');
 			session_destroy();
 			header("Refresh:5;url=index.php");
 		}
-		// game is a draw
-		if($winner === 2)
+		elseif($winner === 2) //game is a draw
 		{
-			echo("DRAW");
-			echo("<br>New Game starts in 5 seconds");
+			echo('<b>DRAW</b>');
+			echo('<br/>(New Game starts in 5 seconds...)');
 			session_destroy();
-			header("Refresh:5;url=index.php");	
+			header('Refresh:5;url=index.php');	
+		}
+		else //none of the above
+		{
+			$this->switchPlayer();
 		}
 	}
 	
 	/**
-	* @return bool true
-	* Checks the current Board for game state: ongoing, win or draw
+	* @return integer
+	* Checks the current Board for game state: ongoing, win (1) or draw (2)
 	*/
 	public function currentStatus()
 	{
-		//symbol
-		if($this->currentPlayer === $this->player1)
-		{
-			$symbol = $this->player2->getSymbol();
-		} 
-		else
-		{
-			$symbol = $this->player1->getSymbol();
-		}
+		$symbol = $this->getCurrentSymbol();		
 		$board = $this->board->getBoard();
 		
 		//row
@@ -100,7 +87,7 @@ class TicTacToe
 						return (1);
 					}
 				}	
-			}
+			}	
 		}
 		
 		//col
@@ -153,7 +140,7 @@ class TicTacToe
 			$row--;
 		}
 		
-		//fullboard (3x3)
+		//full board
 		$counter = 0;
 		for($col = 0; $col < count($board[count($board) - 1]); $col++)
 		{
@@ -162,7 +149,7 @@ class TicTacToe
 				if($board[$col][$row] != "")
 				{
 					$counter += 1;
-					if($counter === 9)
+					if($counter === count($board) * count($board[count($board) - 1]))
 					{
 						return (2);
 					}
@@ -176,31 +163,29 @@ class TicTacToe
 	*/
 	private function switchPlayer()
 	{
-		for($col = 0; $col < 3; $col++){
-			for($row = 0; $row < 3; $row++){
-				if(isset($_GET["cell-".$col."-".$row])){
-					if($this->player1->getSymbol() == $_GET["cell-".$col."-".$row]) {
-						$this->currentPlayer = $this->player1;
-					}
-					if($this->player2->getSymbol() == $_GET["cell-".$col."-".$row]) {
+		$board = $this->board->getBoard();
+		for($row = 0; $row < count($board); $row++)
+		{
+			for($col = 0; $col < count($board[count($board) - 1]); $col++)
+			{
+				if(isset($_GET["cell-".$row."-".$col]))
+				{
+					if($this->player1->getSymbol() == $_GET["cell-".$row."-".$col])
+					{
 						$this->currentPlayer = $this->player2;
+					}
+					elseif($this->player2->getSymbol() == $_GET["cell-".$row."-".$col])
+					{
+						$this->currentPlayer = $this->player1;
 					}
 				}
 			}
-		}
-		if($this->currentPlayer === $this->player1)
-		{
-			$this->currentPlayer = $this->player2;
-		}
-		else
-		{
-			$this->currentPlayer = $this->player1;
 		}
 	}
 	
 	/**
 	* @return array string
-	* Returns current state of the board
+	* Returns current board
 	*/
 	public function getBoard()
 	{
