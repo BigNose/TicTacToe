@@ -9,7 +9,7 @@ Class Board
 	private $board;
 
 	/**
-	* Fills a new board object with an emtpy 3x3 field (array)
+	* Fills a new board object with an emtpy 2-dimensional 3x3 array
 	*/
 	public function __construct()
 	{
