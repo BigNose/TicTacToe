@@ -172,22 +172,17 @@ class TicTacToe
 	}
 	
 	/**
-	* Checks which player is active and selects the other one.
+	* Checks which player is $currentPlayer and selects the other one.
 	*/
 	private function switchPlayer()
 	{
-		for($col = 0; $col < count($this->board->getBoard()[count($this->board->getBoard()) - 1]); $col++)
-		{
-			for($row = 0; $row < count($this->board->getBoard()); $row++)
-			{
-				if(isset($_GET["cell-".$col."-".$row]))
-				{
-					if($this->player1->getSymbol() == $_GET["cell-".$col."-".$row])
-					{
+		for($col = 0; $col < 3; $col++){
+			for($row = 0; $row < 3; $row++){
+				if(isset($_GET["cell-".$col."-".$row])){
+					if($this->player1->getSymbol() == $_GET["cell-".$col."-".$row]) {
 						$this->currentPlayer = $this->player1;
 					}
-					if($this->player2->getSymbol() == $_GET["cell-".$col."-".$row])
-					{
+					if($this->player2->getSymbol() == $_GET["cell-".$col."-".$row]) {
 						$this->currentPlayer = $this->player2;
 					}
 				}
@@ -210,6 +205,15 @@ class TicTacToe
 	public function getBoard()
 	{
 		return $this->board;
+	}
+	
+	/**
+	* @return string
+	* Returns the symbol of the currently selected player.
+	*/
+	public function getCurrentSymbol()
+	{
+		return($this->currentPlayer->getSymbol());
 	}
 }
 

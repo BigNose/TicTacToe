@@ -61,10 +61,11 @@ Class Board
 	}
 	
 	/**
+	* @param sting $symbol
 	* @return string $output
 	* Returns current state of the board as whole HTML table
 	*/
-	public function getBoardHtml()
+	public function getBoardHtml($currentSymbol)
 	{
 		$output = '<table class="tic">';
 		//iterating through rows
@@ -79,7 +80,7 @@ Class Board
 				if($this->board[$row][$col] == '')
 				{
 					//add still free and clickable cell to table output
-					$output .= '<input type="submit" class="reset field" name="cell-'.$row.'-'.$col.'" value="X" />';
+					$output .= '<input type="submit" class="reset field" name="cell-'.$row.'-'.$col.'" value="'.$currentSymbol.'" />';
 				}
 				else //array position is already taken
 				{

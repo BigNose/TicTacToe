@@ -63,9 +63,9 @@ $TicTacToe->move();
             <p>Type your game instructions here...</p>
             <form method="get" action="index.php">
 			
-				<?php
+				<?php				
 					//output completed board
-					echo($TicTacToe->getBoard()->getBoardHtml());
+					echo($TicTacToe->getBoard()->getBoardHtml($TicTacToe->getCurrentSymbol()));
 				?>
 				
 			</form>
