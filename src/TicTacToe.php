@@ -113,7 +113,7 @@ class TicTacToe
 			}
 		}
 		
-		//check for diagonal TL->BR
+		//check for diagonal left
 		$counter = 0;
 		$col = 0;
 		for($row = 0; $row < count($board[count($board) - 1]); $row++)
@@ -129,7 +129,7 @@ class TicTacToe
 			$col++;
 		}
 		
-		//check for diagonal BL->TR
+		//check for diagonal right
 		$counter = 0;
 		$col = count($board[count($board) - 1]) - 1;
 		for($row = 0; $row < count($board[count($board) - 1]); $row++)

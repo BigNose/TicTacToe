@@ -31,7 +31,15 @@ Class Board
 			{
 				if(isset($_GET["cell-".$row."-".$col]) && empty($this->board[$row][$col]))
 				{
-					$this->board[$row][$col] = $_GET["cell-".$row."-".$col];
+					if($_GET["cell-".$row."-".$col] === "X" || $_GET["cell-".$row."-".$col] === "O")
+					{
+						$this->board[$row][$col] = $_GET["cell-".$row."-".$col];
+					}
+					else
+					{
+						echo("Someone tried to break the game by editing the URL!");
+						die;
+					}
 				}
 			}
 		}
