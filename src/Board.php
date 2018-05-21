@@ -7,6 +7,12 @@ Class Board
 	* Contains the array used to represent the playing field.
 	*/
 	private $board;
+	
+	/**
+	* @var string $stopInput
+	* used to disable input fields once game ended
+	*/
+	private $stopInput = '';
 
 	/**
 	* Fills a new board object with an emtpy 2-dimensional 3x3 array
@@ -66,6 +72,14 @@ Class Board
 	}
 	
 	/**
+	* Modifies $stopInput to disable input fields after game ends
+	*/
+	public function stopInput()
+	{
+		$this->stopInput = 'disabled';
+	}
+	
+	/**
 	* @param sting $symbol
 	* @return string $output
 	* Returns current state of the board as whole HTML table
@@ -85,7 +99,7 @@ Class Board
 				if($this->board[$row][$col] == '')
 				{
 					//add still free and clickable cell to table output
-					$output .= '<input type="submit" class="reset field" name="cell-'.$row.'-'.$col.'" value="'.$currentSymbol.'" />';
+					$output .= '<input type="submit" class="reset field" name="cell-'.$row.'-'.$col.'" value="'.$currentSymbol.'" '.$this->stopInput.'/>';
 				}
 				else //array position is already taken
 				{

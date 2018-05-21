@@ -54,13 +54,15 @@ class TicTacToe
 			echo('<br/>(New Game starts in 5 seconds...)');
 			session_destroy();
 			header("Refresh:5;url=index.php");
+			$this->board->stopInput();
 		}
 		elseif($winner === 2) //game is a draw
 		{
 			echo('<b>DRAW</b>');
 			echo('<br/>(New Game starts in 5 seconds...)');
 			session_destroy();
-			header('Refresh:5;url=index.php');	
+			header('Refresh:5;url=index.php');
+			$this->board->stopInput();
 		}
 		else //none of the above
 		{
