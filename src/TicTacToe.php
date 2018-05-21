@@ -131,7 +131,7 @@ class TicTacToe
 		
 		//check for diagonal BL->TR
 		$counter = 0;
-		$col = 2;
+		$col = count($board[count($board) - 1]) - 1;
 		for($row = 0; $row < count($board[count($board) - 1]); $row++)
 		{
 			if($board[$row][$col] == $symbol)
