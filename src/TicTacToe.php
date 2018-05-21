@@ -4,7 +4,7 @@ class TicTacToe
 {
 	/**
 	* @var array $board
-	* Contains the current Board for this game.
+	* Contains the current Board for this session.
 	**/
 	private $board;
 
@@ -17,14 +17,14 @@ class TicTacToe
 	
 	/**
 	* @var Player $currentPlayer
-	* Contains the currently selected player.
+	* Contains the currently active player.
 	*/
 	private $currentPlayer;
 	
 	/**
 	* @param Board $board
 	* @param Player $player1, $player2
-	* Starts a new game and checks input validity, then selects $player1 as the current player.
+	* Starts a new game and checks symbol validity, then selects $player1 as the current player.
 	*/
 	public function __construct(Board $board, Player $player1, Player $player2)
 	{
@@ -72,7 +72,7 @@ class TicTacToe
 	
 	/**
 	* @return integer
-	* Checks the current Board for game state: ongoing, win (1) or draw (2)
+	* Checks the current Board for game state: ongoing (0), win (1) or draw (2)
 	*/
 	public function currentStatus()
 	{
@@ -86,12 +86,12 @@ class TicTacToe
 			$counter = 0;
 			for($row = 0; $row < count($board[count($board) - 1]); $row++)
 			{
-				if($board[$row][$col] == $symbol)
+				if($board[$row][$col] === $symbol)
 				{
 					$counter += 1;
 					if($counter === 3)
 					{
-						return (1);
+						return(1);
 					}
 				}	
 			}	
@@ -104,12 +104,12 @@ class TicTacToe
 			$counter = 0;
 			for($col = 0; $col < count($board); $col++)
 			{
-				if($board[$row][$col] == $symbol)
+				if($board[$row][$col] === $symbol)
 				{
 					$counter += 1;
 					if($counter === 3)
 					{
-						return (1);
+						return(1);
 					}
 				}	
 			}
@@ -120,12 +120,12 @@ class TicTacToe
 		$col = 0;
 		for($row = 0; $row < count($board[count($board) - 1]); $row++)
 		{
-			if($board[$row][$col] == $symbol)
+			if($board[$row][$col] === $symbol)
 			{
 				$counter += 1;
 				if($counter === 3)
 				{
-					return (1);
+					return(1);
 				}
 			}
 			$col++;
@@ -136,12 +136,12 @@ class TicTacToe
 		$col = count($board[count($board) - 1]) - 1;
 		for($row = 0; $row < count($board[count($board) - 1]); $row++)
 		{
-			if($board[$row][$col] == $symbol)
+			if($board[$row][$col] === $symbol)
 			{
 				$counter += 1;
 				if($counter === 3)
 				{
-					return (1);
+					return(1);
 				}
 			}
 			$col--;
@@ -153,16 +153,17 @@ class TicTacToe
 		{
 			for($col = 0; $col < count($board); $col++)
 			{
-				if($board[$row][$col] != "")
+				if($board[$row][$col] !== "")
 				{
 					$counter += 1;
 					if($counter === count($board) * count($board[count($board) - 1]))
 					{
-						return (2);
+						return(2);
 					}
 				}	
 			}
 		}
+		return(0);
 	}
 	
 	/**
@@ -171,17 +172,18 @@ class TicTacToe
 	private function switchPlayer()
 	{
 		$board = $this->board->getBoard();
+		
 		for($row = 0; $row < count($board); $row++)
 		{
 			for($col = 0; $col < count($board[count($board) - 1]); $col++)
 			{
 				if(isset($_GET["cell-".$row."-".$col]))
 				{
-					if($this->player1->getSymbol() == $_GET["cell-".$row."-".$col])
+					if($this->player1->getSymbol() === $_GET["cell-".$row."-".$col])
 					{
 						$this->currentPlayer = $this->player2;
 					}
-					elseif($this->player2->getSymbol() == $_GET["cell-".$row."-".$col])
+					elseif($this->player2->getSymbol() === $_GET["cell-".$row."-".$col])
 					{
 						$this->currentPlayer = $this->player1;
 					}
@@ -192,11 +194,11 @@ class TicTacToe
 	
 	/**
 	* @return array string
-	* Returns current board
+	* for accessing the current board
 	*/
 	public function getBoard()
 	{
-		return $this->board;
+		return($this->board);
 	}
 	
 	/**

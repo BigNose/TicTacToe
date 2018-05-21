@@ -43,7 +43,7 @@ Class Board
 					}
 					else
 					{
-						echo("Someone tried to break the game by editing the URL!");
+						echo("<b>Someone tried to break the game by editing the URL!</b>");
 						die;
 					}
 				}
