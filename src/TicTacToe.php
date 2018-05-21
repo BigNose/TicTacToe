@@ -147,11 +147,11 @@ class TicTacToe
 		
 		//check for full board
 		$counter = 0;
-		for($col = 0; $col < count($board[count($board) - 1]); $col++)
+		for($row = 0; $row < count($board[count($board) - 1]); $row++)
 		{
-			for($row = 0; $row < count($board); $row++)
+			for($col = 0; $col < count($board); $col++)
 			{
-				if($board[$col][$row] != "")
+				if($board[$row][$col] != "")
 				{
 					$counter += 1;
 					if($counter === count($board) * count($board[count($board) - 1]))
