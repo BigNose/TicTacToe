@@ -60,7 +60,7 @@ else //No session found, create new one
         <h1>Tic-Tac-Toe</h1>
         <article id="mainContent">
             <h2>Your free browsergame!</h2>
-            <p>Type your game instructions here...</p>
+            <p>Play against your friends!</p>
             <form method="get" action="index.php">
 			
 				<?php				
