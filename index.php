@@ -23,8 +23,8 @@ else //No session found, create new one
 <!DOCTYPE html>
 <head>
     <meta charset="utf-8">
-    <title>Tic-Tac-Toe. This is the title. It is displayed in the titlebar of the window in most browsers.</title>
-    <meta name="description" content="Tic-Tac-Toe-Game. Here is a short description for the page. This text is displayed e. g. in search engine result listings.">
+    <title>Tic-Tac-Toe Browsergame</title>
+    <meta name="description" content="Tic-Tac-Toe-Browsergame to play with your friends, enjoy and have fun!">
     <style>
         table.tic td {
             border: 1px solid #333; /* grey cell borders */
